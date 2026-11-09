@@ -1,0 +1,32 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+.env
+kaggle.json
+data/raw/*
+!data/raw/.gitkeep
+outputs/*
+!outputs/.gitkeep
+catboost_info/
+*.joblib
+*.zip
+
+# Local notebook tooling and experiments that were not run.
+/scripts/make_notebook.py
+/scripts/update_notebook_code.py
+/tests/smoke_notebook.py
+/configs/stratified_diagnostic.yaml
+/tests/conftest.py
+
+# Old notes and generated reports; the submitted analysis is in reports/*/analysis.md.
+/docs/data.md
+/reports/*/experiments/report.md
+/reports/*/manifest.json
+/reports/*/verification.json
+
+# Backup notebooks
+/notebooks/01_kaggle_baseline.ipynb
+/notebooks/01-kaggle-baseline_0.ipynb
+/notebooks/01-kaggle-baseline_0_updated.ipynb

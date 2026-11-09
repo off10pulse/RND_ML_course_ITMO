@@ -1,0 +1,16 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.env
+kaggle.json
+adoption_prediction/data/raw/*
+!adoption_prediction/data/raw/.gitkeep
+adoption_prediction/outputs/*
+!adoption_prediction/outputs/.gitkeep
+catboost_info/
+*.zip
+*.joblib
+HomeWork_1.md
