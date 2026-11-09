@@ -1,0 +1,8 @@
+{
+  "source_notebook": "notebooks/01-kaggle-baseline_done.ipynb",
+  "recovery": "Recovered existing display outputs; notebook code was not re-executed.",
+  "audit": "ast.literal_eval of cell 6 output 0 text/plain (zero-based cell indices)",
+  "schema": "cell 5 output 0 text/html, exported table without display index",
+  "numeric_summary": "cell 6 output 1 text/html; values rounded to six decimals by original display",
+  "plots": "cell 6 outputs 2 and 3 image/png; no pet photographs extracted"
+}

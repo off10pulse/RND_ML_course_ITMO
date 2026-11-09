@@ -1,0 +1,21 @@
+bootstrap_repeats: 500
+catboost:
+  depth: 6
+  iterations: 400
+  l2_leaf_reg: 3
+  learning_rate: 0.05
+  thread_count: 2
+logreg:
+  C: 1.0
+  max_iter: 1500
+models:
+- dummy
+- logreg_tabular
+- logreg_text
+- catboost_regressor
+- catboost_classifier
+n_splits: 5
+seed: 42
+split: stratified_group
+text:
+  max_features: 20000

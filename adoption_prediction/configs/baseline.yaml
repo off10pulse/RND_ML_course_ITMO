@@ -1,0 +1,8 @@
+seed: 42
+split: stratified_group
+n_splits: 5
+models: [dummy, logreg_tabular]
+bootstrap_repeats: 500
+logreg:
+  C: 1.0
+  max_iter: 1500

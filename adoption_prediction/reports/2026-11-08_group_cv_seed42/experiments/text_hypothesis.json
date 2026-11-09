@@ -1,0 +1,9 @@
+{
+  "delta_oof_qwk_text_minus_tabular": 0.007458070209062639,
+  "paired_group_bootstrap": {
+    "low": -0.009094138417905925,
+    "high": 0.026049724555007227,
+    "valid_repeats": 500,
+    "requested_repeats": 500
+  }
+}
