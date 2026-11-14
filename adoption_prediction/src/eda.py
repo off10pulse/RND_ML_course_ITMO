@@ -11,6 +11,7 @@ import pandas as pd
 
 from .data import CATEGORICAL, CLASSES, NUMERIC, REQUIRED, TARGET, find_csv, normalized_description
 from .evaluate import save_json
+from .prepare_data import resolve_data_root
 
 CODE_RANGES = {"Type": [1, 2], "Gender": [1, 2, 3],
                "MaturitySize": [0, 1, 2, 3, 4], "FurLength": [0, 1, 2, 3],
@@ -150,13 +151,15 @@ def run_eda(train, test, output, root=None):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-root", default="data/raw")
+    parser.add_argument("--data-root", help="Папка CSV или ZIP; по умолчанию локальный архив")
+    parser.add_argument("--include-media", action="store_true", help="Распаковать JPG/JSON для полного EDA")
     parser.add_argument("--output", default="outputs/eda")
     args = parser.parse_args()
 
-    train = pd.read_csv(find_csv(args.data_root, "train.csv"))
-    test = pd.read_csv(find_csv(args.data_root, "test.csv"))
-    report = run_eda(train, test, args.output, args.data_root)
+    data_root = resolve_data_root(args.data_root, include_media=args.include_media)
+    train = pd.read_csv(find_csv(data_root, "train.csv"))
+    test = pd.read_csv(find_csv(data_root, "test.csv"))
+    report = run_eda(train, test, args.output, data_root)
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
 

@@ -17,6 +17,7 @@ from .data import (CLASSES, TARGET, file_sha256, find_csv, load_data,
                    normalized_description, validate_frame)
 from .evaluate import group_bootstrap, metrics, save_json
 from .models import MODEL_NAMES, make_model, prediction_labels
+from .prepare_data import resolve_data_root
 
 
 def environment():
@@ -161,23 +162,23 @@ def fit_submission(train, test, config, name, output, sample_path=None):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-root", default="data/raw")
+    parser.add_argument("--data-root", help="Папка CSV или ZIP; по умолчанию локальный архив из data/")
     parser.add_argument("--config", default="configs/baseline.yaml")
     parser.add_argument("--output", default="outputs/baseline")
     parser.add_argument("--refit-model", choices=MODEL_NAMES, default=None,
                         help="Explicit model, selected using local validation")
     args = parser.parse_args()
     config = yaml.safe_load(Path(args.config).read_text())
-    train, test = load_data(args.data_root, with_test=args.refit_model is not None)
+    data_root = resolve_data_root(args.data_root)
+    train, test = load_data(data_root, with_test=args.refit_model is not None)
     if args.refit_model:
-        candidates = [Path(args.data_root) / "sample_submission.csv",
-                      Path(args.data_root) / "test" / "sample_submission.csv"]
+        candidates = [data_root / "sample_submission.csv", data_root / "test" / "sample_submission.csv"]
         sample = next((p for p in candidates if p.is_file()), None)
         fit_submission(train, test, config, args.refit_model, args.output, sample)
     else:
         table = run_cv(train, config, args.output)
-        save_json({"train_path": str(find_csv(args.data_root, "train.csv")),
-                   "train_sha256": file_sha256(find_csv(args.data_root, "train.csv"))},
+        save_json({"train_path": str(find_csv(data_root, "train.csv")),
+                   "train_sha256": file_sha256(find_csv(data_root, "train.csv"))},
                   Path(args.output) / "input.json")
         print(table.to_string(index=False))
 

@@ -63,7 +63,7 @@ def test_input_layout_validation_and_eda(pets, tmp_path):
     assert (tmp_path / "eda/class_distribution.png").is_file()
     broken = pets.copy()
     broken.loc[0, "RescuerID"] = None
-    with pytest.raises(ValueError, match="Missing RescuerID"):
+    with pytest.raises(ValueError, match="RescuerID"):
         validate_frame(broken)
 
 

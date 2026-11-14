@@ -5,6 +5,8 @@ import hashlib
 import numpy as np
 import pandas as pd
 
+from .prepare_data import resolve_data_root
+
 TARGET = "AdoptionSpeed"
 CLASSES = [0, 1, 2, 3, 4]
 NUMERIC = ["Age", "Quantity", "Fee", "VideoAmt", "PhotoAmt"]
@@ -18,7 +20,7 @@ REQUIRED = ["PetID", "RescuerID", "Name", "Description"] + NUMERIC + CATEGORICAL
 
 def find_csv(root, filename):
     """Разная локация данных (root/train.csv или root/train/train.csv)."""
-    root = Path(root)
+    root = resolve_data_root(root)
     split = "train" if filename == "train.csv" else "test"
     candidates = [root / filename, root / split / filename]
     found = [p for p in candidates if p.is_file()]
@@ -62,7 +64,8 @@ def validate_frame(frame, train=True):
             raise ValueError(f"Должна быть категория, а не число: {col}")
 
 
-def load_data(root, with_test=True):
+def load_data(root=None, with_test=True):
+    root = resolve_data_root(root)
     train = pd.read_csv(find_csv(root, "train.csv"))
     validate_frame(train)
     test = None
