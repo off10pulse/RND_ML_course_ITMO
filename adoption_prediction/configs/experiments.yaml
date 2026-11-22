@@ -1,0 +1,16 @@
+seed: 42
+split: stratified_group
+n_splits: 5
+models: [dummy, logreg_tabular, logreg_text, catboost_regressor, catboost_classifier]
+bootstrap_repeats: 500
+logreg:
+  C: 1.0
+  max_iter: 1500
+text:
+  max_features: 20000
+catboost:
+  iterations: 400
+  depth: 6
+  learning_rate: 0.05
+  l2_leaf_reg: 3
+  thread_count: 2

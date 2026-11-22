@@ -1,0 +1,315 @@
+{
+  "train": {
+    "shape": [
+      14993,
+      24
+    ],
+    "missing_columns": [],
+    "null_counts": {
+      "Type": 0,
+      "Name": 1265,
+      "Age": 0,
+      "Breed1": 0,
+      "Breed2": 0,
+      "Gender": 0,
+      "Color1": 0,
+      "Color2": 0,
+      "Color3": 0,
+      "MaturitySize": 0,
+      "FurLength": 0,
+      "Vaccinated": 0,
+      "Dewormed": 0,
+      "Sterilized": 0,
+      "Health": 0,
+      "Quantity": 0,
+      "Fee": 0,
+      "State": 0,
+      "RescuerID": 0,
+      "VideoAmt": 0,
+      "Description": 13,
+      "PetID": 0,
+      "PhotoAmt": 0,
+      "AdoptionSpeed": 0
+    },
+    "empty_string_counts": {
+      "Name": 1265,
+      "Description": 13
+    },
+    "duplicate_rows": 0,
+    "duplicate_pet_ids": 0,
+    "repeated_nonempty_descriptions": 973,
+    "nonempty_descriptions_with_non_ascii": 597,
+    "invalid_code_counts": {
+      "Type": 0,
+      "Gender": 0,
+      "MaturitySize": 0,
+      "FurLength": 0,
+      "Health": 0,
+      "Vaccinated": 0,
+      "Dewormed": 0,
+      "Sterilized": 0
+    },
+    "negative_numeric_counts": {
+      "Age": 0,
+      "Quantity": 0,
+      "Fee": 0,
+      "VideoAmt": 0,
+      "PhotoAmt": 0
+    },
+    "non_numeric_counts": {
+      "Age": 0,
+      "Quantity": 0,
+      "Fee": 0,
+      "VideoAmt": 0,
+      "PhotoAmt": 0,
+      "Type": 0,
+      "Breed1": 0,
+      "Breed2": 0,
+      "Gender": 0,
+      "Color1": 0,
+      "Color2": 0,
+      "Color3": 0,
+      "MaturitySize": 0,
+      "FurLength": 0,
+      "Vaccinated": 0,
+      "Dewormed": 0,
+      "Sterilized": 0,
+      "Health": 0,
+      "State": 0
+    },
+    "semantic_unknown_counts": {
+      "MaturitySize": 0,
+      "FurLength": 0,
+      "Health": 0,
+      "Vaccinated": 1868,
+      "Dewormed": 1781,
+      "Sterilized": 1815
+    },
+    "rescuer_groups": {
+      "n_unique": 5595,
+      "largest_group": 459,
+      "singleton_groups": 3783,
+      "missing": 0
+    },
+    "class_counts": {
+      "0": 410,
+      "1": 3090,
+      "2": 4037,
+      "3": 3259,
+      "4": 4197
+    },
+    "class_proportions": {
+      "0": 0.027346094844260656,
+      "1": 0.20609617821650103,
+      "2": 0.2692589875275128,
+      "3": 0.21736810511572066,
+      "4": 0.2799306342960048
+    },
+    "invalid_target_count": 0,
+    "descriptions_with_conflicting_labels": 121
+  },
+  "test": {
+    "shape": [
+      3972,
+      23
+    ],
+    "missing_columns": [],
+    "null_counts": {
+      "Type": 0,
+      "Name": 414,
+      "Age": 0,
+      "Breed1": 0,
+      "Breed2": 0,
+      "Gender": 0,
+      "Color1": 0,
+      "Color2": 0,
+      "Color3": 0,
+      "MaturitySize": 0,
+      "FurLength": 0,
+      "Vaccinated": 0,
+      "Dewormed": 0,
+      "Sterilized": 0,
+      "Health": 0,
+      "Quantity": 0,
+      "Fee": 0,
+      "State": 0,
+      "RescuerID": 0,
+      "VideoAmt": 0,
+      "Description": 1,
+      "PetID": 0,
+      "PhotoAmt": 0
+    },
+    "empty_string_counts": {
+      "Name": 414,
+      "Description": 1
+    },
+    "duplicate_rows": 0,
+    "duplicate_pet_ids": 0,
+    "repeated_nonempty_descriptions": 260,
+    "nonempty_descriptions_with_non_ascii": 140,
+    "invalid_code_counts": {
+      "Type": 0,
+      "Gender": 0,
+      "MaturitySize": 0,
+      "FurLength": 0,
+      "Health": 0,
+      "Vaccinated": 0,
+      "Dewormed": 0,
+      "Sterilized": 0
+    },
+    "negative_numeric_counts": {
+      "Age": 0,
+      "Quantity": 0,
+      "Fee": 0,
+      "VideoAmt": 0,
+      "PhotoAmt": 0
+    },
+    "non_numeric_counts": {
+      "Age": 0,
+      "Quantity": 0,
+      "Fee": 0,
+      "VideoAmt": 0,
+      "PhotoAmt": 0,
+      "Type": 0,
+      "Breed1": 0,
+      "Breed2": 0,
+      "Gender": 0,
+      "Color1": 0,
+      "Color2": 0,
+      "Color3": 0,
+      "MaturitySize": 0,
+      "FurLength": 0,
+      "Vaccinated": 0,
+      "Dewormed": 0,
+      "Sterilized": 0,
+      "Health": 0,
+      "State": 0
+    },
+    "semantic_unknown_counts": {
+      "MaturitySize": 0,
+      "FurLength": 0,
+      "Health": 0,
+      "Vaccinated": 487,
+      "Dewormed": 436,
+      "Sterilized": 524
+    },
+    "rescuer_groups": {
+      "n_unique": 1518,
+      "largest_group": 162,
+      "singleton_groups": 1043,
+      "missing": 0
+    }
+  },
+  "train_test": {
+    "overlapping_pet_ids": 0,
+    "test_rows_with_train_rescuer": 0,
+    "test_rows_with_train_description": 78,
+    "unseen_category_rows_in_test": {
+      "Type": 0,
+      "Breed1": 9,
+      "Breed2": 12,
+      "Gender": 0,
+      "Color1": 0,
+      "Color2": 0,
+      "Color3": 0,
+      "MaturitySize": 0,
+      "FurLength": 0,
+      "Vaccinated": 0,
+      "Dewormed": 0,
+      "Sterilized": 0,
+      "Health": 0,
+      "State": 3
+    }
+  },
+  "train_modalities": {
+    "images": {
+      "available": true,
+      "folder": "/kaggle/input/competitions/petfinder-adoption-prediction/train_images",
+      "files": 58311,
+      "rows_with_files": 14652,
+      "rows_without_files": 341,
+      "files_for_unknown_pet_ids": 0,
+      "rows_with_photo_count_mismatch": 0
+    },
+    "metadata": {
+      "available": true,
+      "folder": "/kaggle/input/competitions/petfinder-adoption-prediction/train_metadata",
+      "files": 58311,
+      "rows_with_files": 14652,
+      "rows_without_files": 341,
+      "files_for_unknown_pet_ids": 0,
+      "json_files_sampled": 100,
+      "sample_parse_failures": [],
+      "sampled_top_level_keys": [
+        "cropHintsAnnotation",
+        "faceAnnotations",
+        "imagePropertiesAnnotation",
+        "labelAnnotations",
+        "textAnnotations"
+      ]
+    },
+    "sentiment": {
+      "available": true,
+      "folder": "/kaggle/input/competitions/petfinder-adoption-prediction/train_sentiment",
+      "files": 14442,
+      "rows_with_files": 14442,
+      "rows_without_files": 551,
+      "files_for_unknown_pet_ids": 0,
+      "json_files_sampled": 100,
+      "sample_parse_failures": [],
+      "sampled_top_level_keys": [
+        "categories",
+        "documentSentiment",
+        "entities",
+        "language",
+        "sentences",
+        "tokens"
+      ]
+    }
+  },
+  "test_modalities": {
+    "images": {
+      "available": true,
+      "folder": "/kaggle/input/competitions/petfinder-adoption-prediction/test_images",
+      "files": 14465,
+      "rows_with_files": 3858,
+      "rows_without_files": 114,
+      "files_for_unknown_pet_ids": 0,
+      "rows_with_photo_count_mismatch": 0
+    },
+    "metadata": {
+      "available": true,
+      "folder": "/kaggle/input/competitions/petfinder-adoption-prediction/test_metadata",
+      "files": 14465,
+      "rows_with_files": 3858,
+      "rows_without_files": 114,
+      "files_for_unknown_pet_ids": 0,
+      "json_files_sampled": 100,
+      "sample_parse_failures": [],
+      "sampled_top_level_keys": [
+        "cropHintsAnnotation",
+        "imagePropertiesAnnotation",
+        "labelAnnotations",
+        "textAnnotations"
+      ]
+    },
+    "sentiment": {
+      "available": true,
+      "folder": "/kaggle/input/competitions/petfinder-adoption-prediction/test_sentiment",
+      "files": 3865,
+      "rows_with_files": 3865,
+      "rows_without_files": 107,
+      "files_for_unknown_pet_ids": 0,
+      "json_files_sampled": 100,
+      "sample_parse_failures": [],
+      "sampled_top_level_keys": [
+        "categories",
+        "documentSentiment",
+        "entities",
+        "language",
+        "sentences",
+        "tokens"
+      ]
+    }
+  }
+}

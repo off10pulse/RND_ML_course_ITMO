@@ -1,0 +1,30 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+.env
+kaggle.json
+data/raw/*
+!data/raw/.gitkeep
+outputs/*
+!outputs/.gitkeep
+catboost_info/
+*.joblib
+*.zip
+!/data/petfinder-adoption-prediction.zip
+
+# для себя
+/scripts/make_notebook.py
+/scripts/update_notebook_code.py
+/tests/smoke_notebook.py
+/configs/stratified_diagnostic.yaml
+
+# старые резы
+/docs/data.md
+/reports/*/experiments/report.md
+/reports/*/manifest.json
+/reports/*/verification.json
+
+# старый ноут
+/notebooks/01-kaggle-baseline_1.ipynb

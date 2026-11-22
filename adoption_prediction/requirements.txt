@@ -1,0 +1,16 @@
+# основное
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.13.1
+scikit-learn==1.5.2
+catboost==1.2.8
+matplotlib==3.9.4
+PyYAML==6.0.2
+joblib==1.4.2
+
+# для теста
+pytest==8.3.5
+
+# для ноутбуков
+jupyterlab>=4,<5
+ipykernel>=6.29,<7
