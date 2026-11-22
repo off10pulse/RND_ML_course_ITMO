@@ -28,7 +28,7 @@ def environment():
     }}
 
 
-def make_folds(frame, config):
+def make_folds(frame, config, folds=None):
     validate_frame(frame)
     count = int(config.get("n_splits", 5))
     seed = int(config.get("seed", 42))
@@ -46,15 +46,33 @@ def make_folds(frame, config):
     fold_ids = np.full(len(frame), -1, dtype=int)
     diagnostics = []
     descriptions = normalized_description(frame)
-    iterator = (splitter.split(frame, frame[TARGET], groups=frame.RescuerID)
-                if kind == "stratified_group" else splitter.split(frame, frame[TARGET]))
+    if folds is None:
+        iterator = (splitter.split(frame, frame[TARGET], groups=frame.RescuerID)
+                    if kind == "stratified_group" else splitter.split(frame, frame[TARGET]))
+    else:
+        saved = pd.read_csv(folds) if isinstance(folds, (str, Path)) else folds.copy()
+        required = {"PetID", "RescuerID", TARGET, "fold"}
+        if not required.issubset(saved.columns) or not saved.PetID.is_unique:
+            raise ValueError("Некорректная таблица сохраненных фолдов")
+        if set(saved.PetID) != set(frame.PetID):
+            raise ValueError("PetID сохраненных фолдов отличаются от текущего train")
+        aligned = saved.set_index("PetID").loc[frame.PetID]
+        for column in ["RescuerID", TARGET]:
+            if not np.array_equal(aligned[column].to_numpy(), frame[column].to_numpy()):
+                raise ValueError(f"В сохраненных фолдах отличается {column}")
+        if (not aligned.fold.isin(range(count)).all()
+                or set(aligned.fold) != set(range(count))):
+            raise ValueError("Число или номера сохраненных фолдов не соответствуют конфигу")
+        fixed = aligned.fold.to_numpy(dtype=int)
+        iterator = ((np.flatnonzero(fixed != fold), np.flatnonzero(fixed == fold))
+                    for fold in range(count))
     for fold, (train_idx, val_idx) in enumerate(iterator):
         train, val = frame.iloc[train_idx], frame.iloc[val_idx]
         overlap = set(train.RescuerID) & set(val.RescuerID)
         if kind == "stratified_group" and overlap:
             raise AssertionError("Утечка?!?")
         if set(train[TARGET]) != set(CLASSES) or set(val[TARGET]) != set(CLASSES):
-            raise ValueError(f"Фолд {fold} без таргета??; надо уменьшить n_splits")
+            raise ValueError(f"Фолд {fold} без таргета??, надо уменьшить n_splits")
         fold_ids[val_idx] = fold
         seen_text = set(descriptions.iloc[train_idx]) - {""}
         diagnostics.append({
@@ -69,13 +87,13 @@ def make_folds(frame, config):
     return fold_ids, diagnostics
 
 
-def run_cv(frame, config, output):
+def run_cv(frame, config, output, folds=None):
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
     names = config.get("models", MODEL_NAMES[:-1])
     if not names or len(set(names)) != len(names) or set(names) - set(MODEL_NAMES):
         raise ValueError("Нужны модельки")
-    fold_ids, split_report = make_folds(frame, config)
+    fold_ids, split_report = make_folds(frame, config, folds=folds)
     fold_table = frame[["PetID", "RescuerID", TARGET]].copy()
     fold_table["fold"] = fold_ids
     fold_table.to_csv(output / "folds.csv", index=False)
@@ -162,9 +180,10 @@ def fit_submission(train, test, config, name, output, sample_path=None):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-root", help="Папка CSV или ZIP; по умолчанию локальный архив из data/")
+    parser.add_argument("--data-root", help="Папка CSV или ZIP, по умолчанию локальный архив из data/")
     parser.add_argument("--config", default="configs/baseline.yaml")
     parser.add_argument("--output", default="outputs/baseline")
+    parser.add_argument("--folds", help="Сохраненные folds.csv, без этого аргумента разбиение строится заново")
     parser.add_argument("--refit-model", choices=MODEL_NAMES, default=None,
                         help="Explicit model, selected using local validation")
     args = parser.parse_args()
@@ -176,7 +195,7 @@ def main():
         sample = next((p for p in candidates if p.is_file()), None)
         fit_submission(train, test, config, args.refit_model, args.output, sample)
     else:
-        table = run_cv(train, config, args.output)
+        table = run_cv(train, config, args.output, folds=args.folds)
         save_json({"train_path": str(find_csv(data_root, "train.csv")),
                    "train_sha256": file_sha256(find_csv(data_root, "train.csv"))},
                   Path(args.output) / "input.json")

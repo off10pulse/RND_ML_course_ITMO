@@ -1,0 +1,21 @@
+{
+  "source": "/Users/mac/Documents/RND_ML_course_ITMO/adoption_prediction/data/petfinder-adoption-prediction.zip",
+  "rows": 14993,
+  "photo_number": 1,
+  "features": [
+    "photo_metadata_missing",
+    "photo_labels_missing",
+    "photo_colors_missing",
+    "photo_label_count",
+    "photo_max_label_score",
+    "photo_cat_score",
+    "photo_dog_score",
+    "photo_red",
+    "photo_green",
+    "photo_blue"
+  ],
+  "missing_metadata": 341,
+  "missing_labels": 343,
+  "missing_colors": 341,
+  "rows_without_metadata_but_with_photos": 0
+}

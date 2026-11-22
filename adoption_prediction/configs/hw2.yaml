@@ -1,0 +1,13 @@
+seed: 42
+split: stratified_group
+n_splits: 5
+models: [catboost_classifier]
+bootstrap_repeats: 500
+features:
+  photo_metadata: false
+catboost:
+  iterations: 400
+  depth: 6
+  learning_rate: 0.05
+  l2_leaf_reg: 3
+  thread_count: 2

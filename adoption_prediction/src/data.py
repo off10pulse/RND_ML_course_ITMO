@@ -1,4 +1,4 @@
-"""Обзорчик данных"""
+"""Обзорщик данных"""
 from pathlib import Path
 import hashlib
 
@@ -26,7 +26,7 @@ def find_csv(root, filename):
     found = [p for p in candidates if p.is_file()]
     if len(found) != 1:
         raise FileNotFoundError(
-            f"Ожидаю {filename}; пришло {found}. Просмотрено в {candidates}. "
+            f"Ожидаю {filename}, пришло {found}. Просмотрено в {candidates}. "
             "Мб не подкючены данные с кагла или нет в data/raw/"
         )
     return found[0]
@@ -36,7 +36,7 @@ def discover_root(search_root="/kaggle/input"):
     candidates = sorted({p.parent.parent if p.parent.name == "train" else p.parent
                          for p in Path(search_root).rglob("train.csv")})
     if len(candidates) != 1:
-        raise FileNotFoundError(f"Нужно прописать DATA_ROOT; доступные: {candidates}")
+        raise FileNotFoundError(f"Нужно прописать DATA_ROOT, доступные: {candidates}")
     return candidates[0]
 
 

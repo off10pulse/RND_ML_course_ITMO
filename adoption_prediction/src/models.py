@@ -10,12 +10,13 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer, OneHotEncoder, StandardScaler
 
 from .data import CATEGORICAL, NUMERIC
+from .photo_features import PHOTO_FEATURES
 
 MODEL_NAMES = ["dummy", "logreg_tabular", "logreg_text", "catboost_regressor",
                "catboost_classifier"]
 
 
-def prepare_features(frame):
+def prepare_features(frame, photo_metadata=False):
     result = frame[NUMERIC + CATEGORICAL].copy()
     for col in NUMERIC:
         result[col] = pd.to_numeric(result[col], errors="raise").astype(float)
@@ -24,20 +25,27 @@ def prepare_features(frame):
             lambda value: "__MISSING__" if pd.isna(value) else str(int(value))
         )
     result["Description"] = "petdescription " + frame.Description.fillna("").astype(str)
+    if photo_metadata:
+        for col in PHOTO_FEATURES:
+            result[col] = pd.to_numeric(frame[col], errors="raise").astype(float)
     return result
 
 
-def tabular_only(frame):
-    return frame[NUMERIC + CATEGORICAL]
+def tabular_only(frame, photo_metadata=False):
+    return frame[NUMERIC + CATEGORICAL + (PHOTO_FEATURES if photo_metadata else [])]
 
 
 def make_model(name, config):
     seed = config.get("seed", 42)
     if name not in MODEL_NAMES:
-        raise ValueError(f"Unknown model {name}; choose from {MODEL_NAMES}")
+        raise ValueError(f"Неизвестная модель {name}, нужно выбрать из: {MODEL_NAMES}")
     if name == "dummy":
         return DummyClassifier(strategy="most_frequent")
-    prepare = FunctionTransformer(prepare_features, validate=False)
+    use_photo = config.get("features", {}).get("photo_metadata", False)
+    if use_photo and not name.startswith("catboost"):
+        raise ValueError("Метаданные фото в этих экспериментах поддерживаются только CatBoost")
+    prepare = FunctionTransformer(prepare_features, validate=False,
+                                 kw_args={"photo_metadata": use_photo})
     if name.startswith("logreg"):
         numerical = Pipeline([
             ("impute", SimpleImputer(strategy="median", keep_empty_features=True)),
@@ -73,7 +81,8 @@ def make_model(name, config):
         estimator = CatBoostClassifier(loss_function="MultiClass", **params)
     return Pipeline([
         ("prepare", prepare),
-        ("select", FunctionTransformer(tabular_only, validate=False)),
+        ("select", FunctionTransformer(tabular_only, validate=False,
+                                      kw_args={"photo_metadata": use_photo})),
         ("model", estimator),
     ])
 

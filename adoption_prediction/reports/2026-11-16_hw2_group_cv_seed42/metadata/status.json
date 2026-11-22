@@ -1,0 +1,7 @@
+{
+  "name": "metadata",
+  "weights": null,
+  "photo_metadata": true,
+  "hypothesis": "Delta mean QWK >= 0.01 к baseline",
+  "status": "complete"
+}
