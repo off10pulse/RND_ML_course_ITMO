@@ -1,0 +1,35 @@
+{
+  "experiments": [
+    {
+      "name": "baseline",
+      "weights": null,
+      "photo_metadata": false,
+      "hypothesis": "Исходный CatBoostClassifier из ДЗ1"
+    },
+    {
+      "name": "weights",
+      "weights": "SqrtBalanced",
+      "photo_metadata": false,
+      "hypothesis": "Recall класса 0 >= 0.05, delta mean QWK >= -0.01 к baseline"
+    },
+    {
+      "name": "metadata",
+      "weights": null,
+      "photo_metadata": true,
+      "hypothesis": "Delta mean QWK >= 0.01 к baseline"
+    },
+    {
+      "name": "full",
+      "weights": "SqrtBalanced",
+      "photo_metadata": true,
+      "hypothesis": "Проверка совместного эффекта двух изменений"
+    }
+  ],
+  "weights_criterion": {
+    "recall_class_0_min": 0.05,
+    "delta_mean_qwk_min": -0.01
+  },
+  "metadata_criterion": {
+    "delta_mean_qwk_min": 0.01
+  }
+}

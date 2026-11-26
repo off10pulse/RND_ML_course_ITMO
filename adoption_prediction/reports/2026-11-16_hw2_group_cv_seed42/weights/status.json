@@ -1,0 +1,7 @@
+{
+  "name": "weights",
+  "weights": "SqrtBalanced",
+  "photo_metadata": false,
+  "hypothesis": "Recall класса 0 >= 0.05, delta mean QWK >= -0.01 к baseline",
+  "status": "complete"
+}

@@ -151,7 +151,7 @@ def run_eda(train, test, output, root=None):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-root", help="Папка CSV или ZIP; по умолчанию локальный архив")
+    parser.add_argument("--data-root", help="Папка CSV или ZIP, по умолчанию локальный архив")
     parser.add_argument("--include-media", action="store_true", help="Распаковать JPG/JSON для полного EDA")
     parser.add_argument("--output", default="outputs/eda")
     args = parser.parse_args()

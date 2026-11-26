@@ -1,0 +1,7 @@
+{
+  "name": "baseline",
+  "weights": null,
+  "photo_metadata": false,
+  "hypothesis": "Исходный CatBoostClassifier из ДЗ1",
+  "status": "complete"
+}

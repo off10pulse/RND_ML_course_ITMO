@@ -21,7 +21,7 @@ def build_report(output):
     summary = pd.read_csv(output / "summary.csv")
     display = summary[["model", "qwk_mean", "qwk_std", "oof_macro_f1", "oof_mae"]].round(4)
     text = ["# Локальная валидация\n", "Метрики рассчитаны по сохраненным OOF-предсказаниям.\n",
-            markdown_table(display), "\nСреднее и std относятся к фолдам; это не независимые запуски. "
+            markdown_table(display), "\nСреднее и std относятся к фолдам, это не независимые запуски. "
             "Pooled OOF QWK в summary.csv отличается от среднего по фолдам.\n"]
     fig, ax = plt.subplots(figsize=(9, 4))
     ax.bar(summary.model, summary.qwk_mean, yerr=summary.qwk_std.fillna(0), capsize=4)

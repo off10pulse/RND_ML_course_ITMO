@@ -1,0 +1,25 @@
+{
+  "python": "3.9.6",
+  "packages": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.5.2",
+    "scipy": "1.13.1",
+    "catboost": "1.2.8",
+    "matplotlib": "3.9.4",
+    "PyYAML": "6.0.2",
+    "joblib": "1.4.2"
+  },
+  "frame_sha256": "d961b07423708de00b208717f37d1bb4ceb95375ef24672bc25ab6c83272cb4f",
+  "source_sha256": {
+    "__init__.py": "4a2d79b27dd577fc59b7659dec420c28994bafe1b7a32b1fc9e22d8a11e89452",
+    "data.py": "9b8ecb0b7fb1c01c9af3d7eeeb31c53d61f8f1a699ad26e7229c14cdf2bf9b63",
+    "eda.py": "b27f1fd0c8a7b95e4603fa4fcfb9c383941cf28565d9f17f4d23893b3c49e4ba",
+    "evaluate.py": "ce158c1ebe1a4feae642400b5c56601d10583fedb97bf67479388a1d1ddc615b",
+    "models.py": "d193dde030067b3a6b961d2f69037ba6ef900e724725210fcb2dcfceb5846ff6",
+    "photo_features.py": "7f5aa479e21a4d2d2528cf73e4f8802aeddffc144ccb75e7071248860db2b984",
+    "prepare_data.py": "7cacf781c51a960f483c1d5a3fbdf5e13a8d6b37a7ffd6c2da73e80e72931012",
+    "report.py": "192bac0397b3b3ea03802906e89e3954b5147c62396b2cfecf832cc929ef7cdb",
+    "train.py": "0d68fdb557d013b031d6bd006787e2236c5508a7eafac55cd534c3cf5e776675"
+  }
+}

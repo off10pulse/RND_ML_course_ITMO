@@ -86,7 +86,7 @@ def verify_run(run_dir, refit_dir=None, expected_test_rows=None):
         result["refit"] = {"model": refit["model"], "submission_rows": len(submission),
                            "unique_ids_and_valid_labels": True,
                            "test_id_alignment_independently_verified": False,
-                           "note": "Original test/sample_submission not available for independent ID/order check; model was not deserialized."}
+                           "note": "Original test/sample_submission not available for independent ID/order check, model was not deserialized."}
     return result
 
 

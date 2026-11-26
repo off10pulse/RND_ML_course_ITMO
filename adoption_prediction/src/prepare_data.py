@@ -82,7 +82,7 @@ def prepare_archive(source, output=None, include_media=False):
         required = sum(m.file_size for m, p in targets
                        if not p.is_file() or p.stat().st_size != m.file_size)
         if shutil.disk_usage(destination).free < required:
-            raise OSError(f"Недостаточно места: нужно ещё около {required / 1024**3:.2f} GiB")
+            raise OSError(f"Недостаточно места: нужно еще около {required / 1024**3:.2f} GiB")
         state = {"archive": identity, "include_media": include_media, "complete": False}
         marker.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"Распаковка {'всех файлов' if include_media else 'CSV'}: {len(targets)} файлов", flush=True)
@@ -118,7 +118,7 @@ def resolve_data_root(source=None, include_media=False):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--archive", type=Path, default=default_data_source())
-    parser.add_argument("--output", type=Path, help="Пустая папка; по умолчанию кэш в data/raw")
+    parser.add_argument("--output", type=Path, help="Пустая папка, по умолчанию кэш в data/raw")
     parser.add_argument("--include-media", action="store_true", help="Также распаковать JPG и JSON")
     args = parser.parse_args()
     print(prepare_archive(args.archive, args.output, args.include_media))

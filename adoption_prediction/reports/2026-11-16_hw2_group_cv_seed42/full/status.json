@@ -1,0 +1,7 @@
+{
+  "name": "full",
+  "weights": "SqrtBalanced",
+  "photo_metadata": true,
+  "hypothesis": "Проверка совместного эффекта двух изменений",
+  "status": "complete"
+}

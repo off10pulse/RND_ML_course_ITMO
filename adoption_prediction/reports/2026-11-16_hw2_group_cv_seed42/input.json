@@ -1,0 +1,18 @@
+{
+  "environment": {
+    "python": "3.9.6",
+    "packages": {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.13.1",
+      "catboost": "1.2.8",
+      "matplotlib": "3.9.4",
+      "PyYAML": "6.0.2",
+      "joblib": "1.4.2"
+    }
+  },
+  "folds_source": "/Users/mac/Documents/RND_ML_course_ITMO/adoption_prediction/reports/2026-11-08_group_cv_seed42/experiments/folds.csv",
+  "folds_sha256": "238bfb254e4cd1e42aacef78b7388296d90d8afb98364bcaa264602a2cd1dc98",
+  "data_source": "/Users/mac/Documents/RND_ML_course_ITMO/adoption_prediction/data/petfinder-adoption-prediction.zip"
+}
