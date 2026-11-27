@@ -1,0 +1,107 @@
+[
+  {
+    "fold": 0,
+    "train_rows": 12039,
+    "val_rows": 2954,
+    "overlapping_rescuers": 0,
+    "val_rows_with_train_description": 35,
+    "train_class_counts": {
+      "0": 339,
+      "1": 2462,
+      "2": 3205,
+      "3": 2637,
+      "4": 3396
+    },
+    "val_class_counts": {
+      "0": 71,
+      "1": 628,
+      "2": 832,
+      "3": 622,
+      "4": 801
+    }
+  },
+  {
+    "fold": 1,
+    "train_rows": 12097,
+    "val_rows": 2896,
+    "overlapping_rescuers": 0,
+    "val_rows_with_train_description": 217,
+    "train_class_counts": {
+      "0": 329,
+      "1": 2481,
+      "2": 3263,
+      "3": 2668,
+      "4": 3356
+    },
+    "val_class_counts": {
+      "0": 81,
+      "1": 609,
+      "2": 774,
+      "3": 591,
+      "4": 841
+    }
+  },
+  {
+    "fold": 2,
+    "train_rows": 12228,
+    "val_rows": 2765,
+    "overlapping_rescuers": 0,
+    "val_rows_with_train_description": 38,
+    "train_class_counts": {
+      "0": 321,
+      "1": 2492,
+      "2": 3287,
+      "3": 2716,
+      "4": 3412
+    },
+    "val_class_counts": {
+      "0": 89,
+      "1": 598,
+      "2": 750,
+      "3": 543,
+      "4": 785
+    }
+  },
+  {
+    "fold": 3,
+    "train_rows": 11601,
+    "val_rows": 3392,
+    "overlapping_rescuers": 0,
+    "val_rows_with_train_description": 36,
+    "train_class_counts": {
+      "0": 312,
+      "1": 2395,
+      "2": 3142,
+      "3": 2472,
+      "4": 3280
+    },
+    "val_class_counts": {
+      "0": 98,
+      "1": 695,
+      "2": 895,
+      "3": 787,
+      "4": 917
+    }
+  },
+  {
+    "fold": 4,
+    "train_rows": 12007,
+    "val_rows": 2986,
+    "overlapping_rescuers": 0,
+    "val_rows_with_train_description": 20,
+    "train_class_counts": {
+      "0": 339,
+      "1": 2530,
+      "2": 3251,
+      "3": 2543,
+      "4": 3344
+    },
+    "val_class_counts": {
+      "0": 71,
+      "1": 560,
+      "2": 786,
+      "3": 716,
+      "4": 853
+    }
+  }
+]
