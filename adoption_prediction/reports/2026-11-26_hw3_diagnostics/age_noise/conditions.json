@@ -1,0 +1,14 @@
+{
+  "sigmas": [
+    0,
+    1,
+    3
+  ],
+  "noise_seeds": [
+    123,
+    124,
+    125
+  ],
+  "train_age_changed": false,
+  "rule": "max(0, round(Age + sigma * N(0, 1))) only on validation"
+}

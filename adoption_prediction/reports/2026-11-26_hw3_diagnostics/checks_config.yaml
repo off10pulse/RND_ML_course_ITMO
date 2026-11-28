@@ -1,0 +1,14 @@
+age_noise:
+  seeds:
+  - 123
+  - 124
+  - 125
+  sigmas:
+  - 0
+  - 1
+  - 3
+reference_run: reports/2026-11-16_hw2_group_cv_seed42/metadata
+split_seeds:
+- 42
+- 17
+- 2026

@@ -1,0 +1,20 @@
+{
+  "reference_run": "/Users/mac/Documents/RND_ML_course_ITMO/adoption_prediction/reports/2026-11-16_hw2_group_cv_seed42/metadata",
+  "data_source": "/Users/mac/Documents/RND_ML_course_ITMO/adoption_prediction/data/petfinder-adoption-prediction.zip",
+  "reference_oof_sha256": "12920581ab8f618d84f9ebc36227726769175517602dbcc8b00f0d0c3e85e057",
+  "environment": {
+    "python": "3.9.6",
+    "packages": {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.13.1",
+      "catboost": "1.2.8",
+      "matplotlib": "3.9.4",
+      "PyYAML": "6.0.2",
+      "joblib": "1.4.2"
+    }
+  },
+  "run_split_check": true,
+  "run_age_noise_check": true
+}

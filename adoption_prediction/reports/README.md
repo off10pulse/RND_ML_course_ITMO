@@ -1,4 +1,18 @@
-# Сохранённые результаты
+# Сохраненные результаты
+
+## ДЗ3: ошибки и устойчивость
+
+Запуск 26.11.2026 находится в `2026-11-26_hw3_diagnostics/`. Основные результаты и ограничения — в [README проекта](../README.md#дз3-ошибки-устойчивость-и-ограничения).
+
+- [error_examples.csv](2026-11-26_hw3_diagnostics/error_examples.csv), [case_notes.json](2026-11-26_hw3_diagnostics/case_notes.json), `case_photos/` — четыре карточки с описаниями, фото и гипотезами причин ошибок;
+- [error_patterns.csv](2026-11-26_hw3_diagnostics/error_patterns.csv) — частоты типовых ошибок;
+- [slices.csv](2026-11-26_hw3_diagnostics/slices.csv), [class_metrics.csv](2026-11-26_hw3_diagnostics/class_metrics.csv) — качество по группам и классам;
+- [split_robustness.csv](2026-11-26_hw3_diagnostics/split_robustness.csv), `splits/` — два новых разбиения и исходная оценка ДЗ2, конфиги, фолды и OOF;
+- [age_noise/summary.csv](2026-11-26_hw3_diagnostics/age_noise/summary.csv), `age_noise/` — проверка возраста, семь условий с OOF, метрики по фолдам и параметры шума;
+- `slices.png`, `classes.png`, `slice_target_distribution.png`, `split_robustness.png`, `age_noise.png` — визуальные артефакты;
+- `model_config.yaml`, `checks_config.yaml`, `input.json` — выбранная модель, условия проверок и окружение.
+
+QWK при смене разбиения — 0.3319–0.3382. При шуме возраста sigma=1 и 3 месяца — 0.3220 и 0.2772 соответственно. Гиперпараметры по результатам этих проверок не подбирались.
 
 ## ДЗ2: веса классов и метаданные первого фото
 

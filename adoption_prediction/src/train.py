@@ -31,7 +31,7 @@ def environment():
 def make_folds(frame, config, folds=None):
     validate_frame(frame)
     count = int(config.get("n_splits", 5))
-    seed = int(config.get("seed", 42))
+    seed = int(config.get("split_seed", config.get("seed", 42)))
     if count < 2 or frame[TARGET].value_counts().min() < count:
         raise ValueError("Для каждого класса нужно минимум n_splits строк")
     kind = config.get("split", "stratified_group")
